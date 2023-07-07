@@ -68,16 +68,16 @@ p {
 }
 
 #salaryAfterTax:before {
-  content: "\f0d6";
+  content: "\f004";
   font-family: "Font Awesome 5 Free";
   margin-right: 5px;
   font-weight: normal;
-  color: #2ecc71;
+  color: #e74c3c;
   /* Add the appropriate icon class */
 }
 
 #yearlyIncome:before {
-  content: "\f155";
+  content: "\f004";
   font-family: "Font Awesome 5 Free";
   margin-right: 5px;
   font-weight: normal;
@@ -86,16 +86,16 @@ p {
 }
 
 #yearlyTax:before {
-  content: "\f19d";
+  content: "\f004";
   font-family: "Font Awesome 5 Free";
   margin-right: 5px;
   font-weight: normal;
-  color: #2ecc71;
+  color: #e74c3c;
   /* Add the appropriate icon class */
 }
 
 #yearlyIncomeAfterTax:before {
-  content: "\f0d6";
+  content: "\f004";
   font-family: "Font Awesome 5 Free";
   margin-right: 5px;
   font-weight: normal;
