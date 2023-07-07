@@ -73,7 +73,6 @@ p {
   margin-right: 5px;
   font-weight: normal;
   color: #e74c3c;
-  /* Add the appropriate icon class */
 }
 
 #yearlyIncome:before {
@@ -82,7 +81,6 @@ p {
   margin-right: 5px;
   font-weight: normal;
   color: #2ecc71;
-  /* Add the appropriate icon class */
 }
 
 #yearlyTax:before {
@@ -91,7 +89,6 @@ p {
   margin-right: 5px;
   font-weight: normal;
   color: #e74c3c;
-  /* Add the appropriate icon class */
 }
 
 #yearlyIncomeAfterTax:before {
@@ -100,9 +97,5 @@ p {
   margin-right: 5px;
   font-weight: normal;
   color: #2ecc71;
-  /* Add the appropriate icon class */
 }
-
-
-/* You can replace the FontAwesome class with your own custom icon class */
 
