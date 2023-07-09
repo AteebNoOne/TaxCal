@@ -1,0 +1,1 @@
+var allowedDomains=["https://ateebnoone.github.io/TaxCal/"];function isAllowedDomain(){var o=window.location.hostname;return!!allowedDomains.includes(o)}function displayErrorMessage(){document.body.innerHTML="<h1>Sorry, this page is only accessible on the allowed domains.</h1>"}isAllowedDomain()||displayErrorMessage();
