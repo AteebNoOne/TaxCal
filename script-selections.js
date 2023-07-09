@@ -1,0 +1,1 @@
+let fun=2324;function selectOptionChanged(){var e=document.getElementById("yearSelection"),e=e.options[e.selectedIndex].value;console.log(e),"2023-2024"===e?fun=2324:"2022-2023"===e&&(fun=2223),document.getElementById("selected-year").innerHTML="Selected Year: "+e}function functionToBeCalled(){2324===fun&&calculateTax2023_2024()}

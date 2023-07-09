@@ -1,37 +1,108 @@
 body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
   text-align: center;
 }
 
+.container {
+  margin-top: 50px;
+  margin-left: 13%;
+  margin-right: 10%;
+}
+
+.copy-and-results {
+  display: flex;
+  align-items: center;
+}
+
+.result-container {
+  flex: 7;
+  text-align: left;
+}
+
+.copy-container {
+  flex: 3;
+  text-align: left;
+  display: none;
+}
+
+.copy-container p {
+  text-align: center;
+}
+
+.copyStatus {
+  margin-top: 10%;
+  color: green;
+}
+
+.copy-button {
+  /* Add styles for the copy button here */
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  /* Adjust the padding values to increase or decrease the button size */
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 36px;
+  /* Adjust the font-size to change the text size */
+}
+
+.copy-button:hover {
+  background-color: rgba(128, 128, 128, 0.192);
+}
+
+.copy-button .fa-copy {
+  /* Add styles for the copy icon here */
+  margin-right: 5px;
+  color: #0056b3;
+}
+
+.copy-button .fa-copy:hover {
+  /* Add styles for the copy icon here */
+  margin-right: 5px;
+  color: #42b300;
+}
+
+
+
 h1 {
-  color: #2ecc71;
+  font-size: 60px;
+  margin-bottom: 30px;
+  font-weight: bolder;
+}
+
+.form-horizontal {
+  margin-bottom: 30px;
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #2ecc71;
+  font-size: 18px;
 }
 
-input[type="number"] {
-  width: 200px;
-  padding: 5px;
-  border: 1px solid #2ecc71;
-  border-radius: 4px;
+input {
+  text-align: center;
+  width: 100px;
 }
 
 h2 {
-  color: #2ecc71;
-  margin-top: 20px;
+  margin-top: 30px;
+  font-size: 24px;
 }
 
 p {
-  color: #333;
+  font-size: 18px;
   margin-bottom: 10px;
 }
 
+
+#digitError {
+  text-align: center;
+  font-size: 48px;
+  font-weight: bolder;
+  color: red;
+  margin-right: 10%;
+}
+
+#selected-year,
 #monthlyIncome,
 #monthlyTax,
 #salaryAfterTax,
@@ -41,61 +112,61 @@ p {
   font-weight: bold;
 }
 
-#monthlyIncome:after,
-#monthlyTax:after,
-#salaryAfterTax:after,
-#yearlyIncome:after,
-#yearlyTax:after,
-#yearlyIncomeAfterTax:after {
-  content: " PKR";
+#selected-year{
+  color: blue;
 }
 
-#monthlyIncome:before {
-  content: "\f004";
-  font-family: "Font Awesome 5 Free";
-  margin-right: 5px;
-  font-weight: 900;
-  color: #e74c3c;
+
+
+
+/* Responsive Styles */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  input {
+    width: 80px;
+  }
+
+  h2 {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
 }
 
-#monthlyTax:before {
-  content: "\f004";
-  font-family: "Font Awesome 5 Free";
-  margin-right: 5px;
-  font-weight: normal;
-  color: #2ecc71;
-  /* Add the appropriate icon class */
-}
+@media (max-width: 400px) {
+  h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
 
-#salaryAfterTax:before {
-  content: "\f004";
-  font-family: "Font Awesome 5 Free";
-  margin-right: 5px;
-  font-weight: 900;
-  color: #e74c3c;
-}
+  label {
+    font-size: 10px;
+  }
 
-#yearlyIncome:before {
-  content: "\f004";
-  font-family: "Font Awesome 5 Free";
-  margin-right: 5px;
-  font-weight: normal;
-  color: #2ecc71;
-}
+  input {
+    width: 60px;
+  }
 
-#yearlyTax:before {
-  content: "\f004";
-  font-family: "Font Awesome 5 Free";
-  margin-right: 5px;
-  font-weight: 900;
-  color: #e74c3c;
-}
+  h2 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
 
-#yearlyIncomeAfterTax:before {
-  content: "\f004";
-  font-family: "Font Awesome 5 Free";
-  margin-right: 5px;
-  font-weight: normal;
-  color: #2ecc71;
+  p {
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
 }
-

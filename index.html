@@ -1,34 +1,67 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Salary Tax Calculator 2023-2024</title>
+  <title>Salary Tax Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
-  <h1>Salary Tax Calculator 2023-2024</h1>
+  <h1>Salary Tax Calculator</h1>
+  <div class="container">
+    <form class="form-horizontal">
+      <div class="form-group form-group-lg">
+        <div class="col-sm-10">
+          <select class="form-control" id="yearSelection" onchange="selectOptionChanged()">
+            <option value="2023-2024">Year 2023-2024</option>
+            <option value="2022-2023">Year 2022-2023</option>
+            <option value="2021-2022">Year 2021-2022</option>
+            <option value="2020-2021">Year 2020-2021</option>    
+            <option value="2019-2020">Year 2019-2020</option>                    
+          </select>
+        </div>
+      </div>
+      <div class="form-group form-group-lg">
+        <div class="col-sm-10">
+          <input class="form-control" type="number" id="monthlySalary" oninput="functionToBeCalled()" maxlength="19"
+            max="9999999999999999999" placeholder="Enter your monthly salary">
+        </div>
+      </div>
+    </form>
+    
+    <div class="copy-and-results">
+      <div class="result-container">
+        <p id="digitError"></p>
+        <p id="selected-year" class="lead">Selected Year: 2023-2024</p>
+        <p id="monthlyIncome" class="lead">Monthly Income: </p>
+        <p id="monthlyTax" class="lead">Monthly Tax: </p>
+        <p id="salaryAfterTax" class="lead">Monthly Salary After Tax: </p>
+        <p id="yearlyIncome" class="lead">Yearly Income: </p>
+        <p id="yearlyTax" class="lead">Yearly Tax: </p>
+        <p id="yearlyIncomeAfterTax" class="lead">Yearly Income After Tax: </p>
+      </div>
+      <div class="copy-container">
+        <button class="copy-button" onclick="copyResults()">
+        <p>Copy results</p>
 
-  <label for="monthlySalary">Monthly Salary:</label>
-  <input type="number" id="monthlySalary" oninput="calculateTax()" maxlength="19" max="19">
+          <i class="fas fa-copy"></i>
 
-  <h2>Results:</h2>
-
-  <p id="monthlyIncome">Monthly Income: </p>
-  <p id="monthlyTax">Monthly Tax: </p>
-  <p id="salaryAfterTax">Monthly Salary After Tax: </p>
-  <p id="yearlyIncome">Yearly Income: </p>
-  <p id="yearlyTax">Yearly Tax: </p>
-  <p id="yearlyIncomeAfterTax">Yearly income after tax: </p>
-
-  <script src="tax-cal23.js"></script>
+        <p id="copyStatus" class="copyStatus"></p>
+      </button>
+      </div>
+    </div>
+  </div>
+  <script src="script-selections.js"></script>
+  <script src="script-2324.js"></script>
+  <script src="script-copy-results.js"></script>
+  <script src="selections.js"></script>
+  <script src="2324.js"></script>
+  <script src="copy-results.js"></script>
 </body>
-<footer>
-  <p>&copy; Atib Ur Rehman All rights reserved <span class="fa fa-heart"></span> <span id="currentYear"></span> <a href="https://github.com/ateebnoone" target="_blank">Github.com/ateebnoone</a></p>
-</footer>
-
-<script>
-  var currentYear = new Date().getFullYear();
-  document.getElementById('currentYear').textContent = currentYear;
-</script>
-
 </html>
