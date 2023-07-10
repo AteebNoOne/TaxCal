@@ -36,4 +36,4 @@ Sure, here's the updated contact information:
 
 ## Contact
 
-For any inquiries or permission requests regarding the tax calculator widget, please contact us via WhatsApp at [+92 318 2553930](https://wa.me/923182553930?text='Hello%20I%20need%20Tax%20calculator%20on%20my%20site').
+For any inquiries or permission requests regarding the tax calculator widget, please contact us via WhatsApp at [+92 318 2553930](https://wa.me/923182553930?text=Hello%20I%20need%20Tax%20calculator%20on%20my%20website).
