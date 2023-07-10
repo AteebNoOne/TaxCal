@@ -10,6 +10,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Set the X-Frame-Options header to allow framing from a specific website
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window !== window.top) {
+        // If the current window is inside a frame
+        var allowedDomains = ['https://www.altafnsonsassociates.pk'];
+        var isAllowed = allowedDomains.some(function(domain) {
+          return window.location.href.startsWith(domain);
+        });
+        
+        if (!isAllowed) {
+          // If the framing website is not in the allowed list
+          document.write('<h1>This website cannot be framed.</h1>');
+          // or redirect to another page or display an error message
+          //window.location.href = 'error.html';
+        }
+      }
+    });
+  </script>
 </head>
 
 <body>
