@@ -9,3 +9,5 @@ if (window.location.host !== 'ateeb.com') {
     });
   }
   
+    var parentURL = window.parent.location.href;
+    console.log("Parent url" , parentURL);
