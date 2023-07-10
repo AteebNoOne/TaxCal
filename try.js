@@ -9,9 +9,7 @@ if (window.location.host !== 'ateeb.com') {
     });
   }
   
-    var parentURL = window.parent.location.href;
-    console.log("Parent url" , parentURL);
 
     const parentUrl = document.referrer;
     // Output the parent URL (you can modify this as needed)
-    console.log("Parent URL try 2:", parentUrl);
+    console.log("Parent URL:", parentUrl);
