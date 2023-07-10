@@ -35,4 +35,5 @@ This project does not specify a license. Therefore, all rights are reserved by A
 
 ## Contact
 
-For any inquiries or permission requests regarding the tax calculator widget, please contact Altaf and Sons Associates at [contact@altafnsonsassociates.pk](mailto:contact@altafnsonsassociates.pk).
+Contact
+For any inquiries or permission requests regarding the tax calculator widget, please contact us via WhatsApp at +92 318 2553930.
