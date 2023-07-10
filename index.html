@@ -17,12 +17,12 @@
   <script>
 var allowedSites = [
   'https://www.altafnsonsassociates.pk/p/tax-calculator.html',
-  'https://ateebnoone.github.io/TaxCal/',
+  'https://ateebnoone.github.io/Tax',
   'file:///D:/TaxCal/index.html'
 ];
 
 const currentUrl = window.location.href;
-console.log("Current URL: ", currentUrl);
+//console.log("Current URL: ", currentUrl);
 
 let urlMatch = false;
 
@@ -30,7 +30,7 @@ for (let i = 0; i < allowedSites.length; i++) {
   //console.log("Allowed site- ",allowedSites[i],"Current url- ",currentUrl);
   if (allowedSites[i] === currentUrl) {
     urlMatch = true;
-    console.log('Allowed');
+    //console.log('Allowed');
     break;
   }
 }
