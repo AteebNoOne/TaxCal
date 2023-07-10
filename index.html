@@ -10,29 +10,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="styles.css">
-  <script>
-    // Set the X-Frame-Options header to allow framing from a specific website
-    document.addEventListener("DOMContentLoaded", function() {
-      if (window !== window.top) {
-        // If the current window is inside a frame
-        var allowedDomains = ['https://www.altafnsonsassociates.pk'];
-        var isAllowed = allowedDomains.some(function(domain) {
-          return window.location.href.startsWith(domain);
-        });
-        
-        if (!isAllowed) {
-          // If the framing website is not in the allowed list
-          document.write('<h1>This website cannot be framed.</h1>');
-          // or redirect to another page or display an error message
-          window.location.href = 'error.html';
-        }
-      }
-    });
-  </script>
 </head>
 
 <body>
   <h1>Salary Tax Calculator</h1>
+  <script>
+    var allowedSites = [
+      'https://www.altafnsonsassociates.pk/p/tax-calculator.html',
+      'https://ateebnoone.github.io/TaxCal/',
+      'file:///D:/TaxCal/'
+    ];
+    
+    var referrer = document.referrer.toLowerCase();
+    
+    if (!allowedSites.includes(referrer.toLowerCase())) {
+      // If the referrer is not one of the allowed sites, redirect or display an error message
+      // For example, you can redirect to an error page:
+      window.location.href = 'error.html';
+    }
+  </script>
+  
   <div class="container">
     <form class="form-horizontal">
       <div class="form-group form-group-lg">
