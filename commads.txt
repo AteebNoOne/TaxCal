@@ -1,3 +1,0 @@
-uglifyjs 2324.js -o script-2324.js -c -m
-uglifyjs copy-results.js -o script-copy-results.js -c -m
-uglifyjs selections.js -o script-selections.js -c -m

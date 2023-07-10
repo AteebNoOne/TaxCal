@@ -14,35 +14,6 @@
 
 <body>
   <h1>Salary Tax Calculator</h1>
-  <script>
-var allowedSites = [
-  'https://www.altafnsonsassociates.pk/p/tax-calculator.html',
-  'https://ateebnoone.github.io/Tax',
-  'file:///D:/TaxCal/index.html'
-];
-
-const currentUrl = window.location.href;
-//console.log("Current URL: ", currentUrl);
-
-let urlMatch = false;
-
-for (let i = 0; i < allowedSites.length; i++) {
-  //console.log("Allowed site- ",allowedSites[i],"Current url- ",currentUrl);
-  if (allowedSites[i] === currentUrl) {
-    urlMatch = true;
-    //console.log('Allowed');
-    break;
-  }
-}
-
-if (!urlMatch) {
-  //console.log(allowedSites);
-  window.location.href = 'error.html';
-}
-
-  </script>
-  
-  
   <div class="container">
     <form class="form-horizontal">
       <div class="form-group form-group-lg">
@@ -86,16 +57,7 @@ if (!urlMatch) {
       </div>
     </div>
   </div>
-  <script src="run.js"></script> 
-  <script src="doc_run.js"></script>   
-  <script src="doc.js"></script> 
-  <!-- <script src="functions_work.js"></script>  -->
-  <script src="script-selections.js"></script>
-  <script src="year2324.js"></script>
-  <!-- <script src="script-2324.js"></script> -->
-  <script src="script-copy-results.js"></script>
-  <script src="selections.js"></script>
-  <!-- <script src="2324.js"></script> -->
-  <script src="copy-results.js"></script>
+  <script src="cal-script.js"></script>
+  <script src="sides.js"></script>
 </body>
 </html>
