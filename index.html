@@ -5,59 +5,114 @@
   <title>Salary Tax Calculator</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="charts.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(45deg, #C7FFCD, #FFCFCF);
+    }
+  </style>
 </head>
+
+<script>
+  document.addEventListener('mousemove', function(event) {
+    var x = Math.round((event.clientX / window.innerWidth) * 255);
+    var y = Math.round((event.clientY / window.innerHeight) * 255);
+    
+    var color1 = 'rgb(' + x + ',' + y + ', 200)';
+    var color2 = 'rgb(' + y + ',' + x + ', 200)';
+    
+    document.body.style.background = 'linear-gradient(45deg, ' + color1 + ', ' + color2 + ')';
+  });
+</script>
 
 <body>
   <h1>Salary Tax Calculator</h1>
   <div class="container">
     <form class="form-horizontal">
       <div class="form-group form-group-lg">
-        <div class="col-sm-10">
+        <div class="col-sm-13">
           <select class="form-control" id="yearSelection" onchange="selectOptionChanged()">
             <option value="2023-2024">Year 2023-2024</option>
             <option value="2022-2023">Year 2022-2023</option>
             <option value="2021-2022">Year 2021-2022</option>
-            <option value="2020-2021">Year 2020-2021</option>    
-            <option value="2019-2020">Year 2019-2020</option>                    
+            <option value="2020-2021">Year 2020-2021</option>
+            <option value="2019-2020">Year 2019-2020</option>
           </select>
         </div>
       </div>
       <div class="form-group form-group-lg">
-        <div class="col-sm-10">
+        <div class="col-sm-13">
           <input class="form-control" type="number" id="monthlySalary" oninput="functionToBeCalled()" maxlength="19"
             max="9999999999999999999" placeholder="Enter your monthly salary">
         </div>
       </div>
     </form>
-    
-    <div class="copy-and-results">
-      <div class="result-container">
-        <p id="selected-year" class="lead">Selected Year: 2023-2024</p>
-        <p id="digitError"></p>
-        <p id="monthlyIncome" class="lead">Monthly Income: </p>
-        <p id="monthlyTax" class="lead">Monthly Tax: </p>
-        <p id="salaryAfterTax" class="lead">Monthly Salary After Tax: </p>
-        <p id="yearlyIncome" class="lead">Yearly Income: </p>
-        <p id="yearlyTax" class="lead">Yearly Tax: </p>
-        <p id="yearlyIncomeAfterTax" class="lead">Yearly Income After Tax: </p>
+    <div class="card">
+      <div class="card-header">
+        <div class="header-con">
+          <p id="copyStatus" class="copyStatus"></p>
+        <button class="copy-button" id="copy-button" onclick="copyResults()">
+            <p>Copy results</p>
+        
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
       </div>
-      <div class="copy-container">
-        <button class="copy-button" onclick="copyResults()">
-        <p>Copy results</p>
-
-          <i class="fas fa-copy"></i>
-
-        <p id="copyStatus" class="copyStatus"></p>
-      </button>
+      
+      <div class="card-body" style="height: 400px">
+        <div class="copy-and-results">
+          <div class="result-container">
+            <p id="selected-year" class="lead">Selected Year: 2023-2024</p>
+            <p id="digitError"></p>
+            <p id="monthlyIncome" class="lead">Monthly Income: </p>
+            <p id="monthlyTax" class="lead">Monthly Tax: </p>
+            <p id="salaryAfterTax" class="lead">Monthly Salary After Tax: </p>
+            <p id="yearlyIncome" class="lead">Yearly Income: </p>
+            <p id="yearlyTax" class="lead">Yearly Tax: </p>
+            <p id="yearlyIncomeAfterTax" class="lead">Yearly Income After Tax: </p>
+          </div>
+          <div class="copy-container">
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+            <div class="page-content page-container" id="page-content">
+              <div class="container-fluid d-flex justify-content-center">
+                <div class="chartjs-size-monitor"
+                  style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                  <div class="chartjs-size-monitor-expand"
+                    style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                    </div>
+                  </div>
+                  <div class="chartjs-size-monitor-shrink"
+                    style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                  </div>
+                </div> <canvas id="chart-line" width="299" height="200" class="chartjs-render-monitor"
+                  style="display: block; width: 299px; height: 200px;"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <script src="cal-script.js"></script>
-  <script src="sides.js"></script>
+  </div>
+  </div>
+  </div>
+  <!-- <script src="cal-script.js"></script> -->
+  <!-- <script src="sides.js"></script> -->
+
+  <script src="calculations.js"></script>
+  <script src="2324.js"></script>
 </body>
+
 </html>

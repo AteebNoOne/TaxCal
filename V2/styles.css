@@ -1,83 +1,80 @@
 body {
   text-align: center;
-  display: block;
-
-    background: linear-gradient(45deg, #C7FFCD, #A5FFB4, #FFA6A6, #FFCFCF);
-  
-  
+  scroll-behavior: smooth;
+  font-family: Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 
 .container {
   text-align: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 1%;
 }
 
-.copy-and-results {
-  display: flex;
+.charts-container {
+  display: none;
+  justify-content: center;
   align-items: center;
 }
 
-.result-container {
-  flex: 5;
-  text-align: left;
-}
-
-.copy-container {
-  flex: 5;
-  text-align: left;
-
-  display: none;
-}
-
-.copy-container p {
+.charts-container p {
   text-align: center;
 }
 
-.header-con{
+.charts-container .card {
+  width: 340pt;
+  height: auto;
+}
+
+.flex-left {
+  flex: 1;
+}
+
+.flex-right {
+  flex: 1;
+  margin-right: 180pt;
+}
+
+
+.header-con {
   display: flex;
   align-items: center;
 }
 
 .copy-button {
-  flex: 2;
+  flex: 4;
   /* Add styles for the copy button here */
   text-align: center;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
+  padding: 10 20;
   /* Adjust the padding values to increase or decrease the button size */
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
-  margin-left: 400px;
   display: none;
-
   /* Adjust the font-size to change the text size */
 }
+
 .copy-button:hover {
   background-color: rgba(128, 128, 128, 0.192);
 }
 
 .copy-button .fa-copy {
   /* Add styles for the copy icon here */
-  margin-left: 15px;
+  margin-left: 5%;
+  margin-bottom: 3%;
   color: #0056b3;
 }
 
 .copy-button .fa-copy:hover {
   /* Add styles for the copy icon here */
-  margin-right: 5px;
+  margin-right: 5%;
   color: #42b300;
-}
-
-
-.title{
-  flex: 4;
-  text-align: center;
-  justify-content: center;
 }
 
 .copyStatus {
@@ -118,8 +115,9 @@ p {
 
 
 #digitError {
+  justify-content: center;
   text-align: center;
-  font-size: 48px;
+  font-size: 4rem;
   font-weight: bolder;
   color: red;
   margin-right: 10%;
@@ -135,27 +133,69 @@ p {
   font-weight: bold;
 }
 
-#selected-year{
+#selected-year {
   color: blue;
+  font-size: 200%;
 }
-
-
 
 
 /* Responsive Styles */
 
 @media (max-width: 1200px) {
-  .copy-and-results {
-    display: block;
-
+  .charts-container .card {
+    width: 260pt;
+    margin-top: 0;
+    z-index: 0;
   }
+
+  .charts-container p {
+    font-size: 11pt;
+  }
+
+  .flex-left {
+    margin-left: 35pt;
+  }
+
+}
+
+@media (max-width: 992px) {
+
+  .charts-container .card {
+    width: 220pt;
+    height: 350pt;
+  }  
+
+  #main-card{
+    width: 600pt;
+  }
+
+  
+}
+
+@media (max-width: 720px) {
+
+  .charts-container .card {
+    width: 230pt;
+    height: 350pt;
+  }  
+
+  #main-card , .container .col-sm-13{
+    width: 500pt;
+    margin-left: -60pt;
+  }
+  .charts-container .flex-left{
+    margin-left: 100pt;
+  }
+
+
 }
 
 @media (max-width: 600px) {
-  .copy-and-results {
-    display: block;
-
+  .header-con {
+    display: inline-block;
+    align-items: center;
   }
+
   h1 {
     font-size: 40px;
     margin-bottom: 20px;
@@ -178,12 +218,17 @@ p {
     font-size: 16px;
     margin-bottom: 5px;
   }
-  .container{
-    display: block;
-  }
+
+
 }
 
 @media (max-width: 400px) {
+  .copy-button {
+    margin-right: 100px;
+    flex: 8;
+    display: flex;
+  }
+
   h1 {
     font-size: 30px;
     margin-bottom: 10px;
@@ -206,4 +251,20 @@ p {
     font-size: 10px;
     margin-bottom: 3px;
   }
+
+  #main-card {
+    height: auto;
+  }
+
+  .charts-container .card {
+    width: 240pt;
+    /* Adjust the card width for smaller screens */
+  }
+
+  #selected-year {
+    color: blue;
+    font-size: 16pt;
+  }
 }
+
+

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Salary Tax Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="charts.css">
+  <link rel="stylesheet" href="tabs.css">
+  <link rel="stylesheet" type="text/css" href="tables.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'salaryTab')">Salary Tax Calculator</button>
+    <button class="tablinks" onclick="openTab(event, 'businessTab')">Business Tax Calculator</button>
+    <button class="tablinks" onclick="openTab(event, 'propertyTab')">Property Tax Calculator</button>
+  </div>
+
+  <div id="salaryTab" class="tabcontent">
+    <h1>Salary Tax Calculator</h1>
+    <div class="container">
+      <form class="form-horizontal">
+        <div class="form-group form-group-lg">
+          <div class="col-sm-13">
+            <select class="form-control" id="yearSelection" onchange="selectOptionChanged()">
+              <option value="2023-2024">Year 2023-2024</option>
+              <option value="2022-2023">Year 2022-2023</option>
+              <option value="2021-2022">Year 2021-2022</option>
+              <option value="2020-2021">Year 2020-2021</option>
+              <option value="2019-2020">Year 2019-2020</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <div class="col-sm-13">
+            <input class="form-control" type="number" id="monthlySalary" oninput="functionToBeCalled()" maxlength="19"
+              max="9999999999999999999" placeholder="Enter your monthly salary" value="60000">
+          </div>
+        </div>
+      </form>
+      <div class="card" id="main-card">
+        <div class="card-header">
+          <div class="header-con">
+            <p id="copyStatus" class="copyStatus"></p>
+            <button class="copy-button" id="copy-button" onclick="copyResults()">
+              <p>Copy results</p>
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+        </div>
+        <p id="selected-year" class="lead">Selected Year: 2023-2024</p>
+        <p id="digitError"></p>
+        <div class="charts-container">
+          <div class="flex-left">
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+            <div class="page-content page-container" id="page-content">
+              <div class="padding">
+                <div class="row">
+                  <div class="container-fluid d-flex justify-content-center">
+                    <div class="col-sm-8 col-md-6">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3>Monthly</h3>
+                        </div>
+                        <div class="card-body" style="height: 480px">
+                          <div class="chartjs-size-monitor"
+                            style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                            <div class="chartjs-size-monitor-expand"
+                              style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                              <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink"
+                              style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                              <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                            </div>
+                          </div> <canvas id="chart-line" width="299" height="200" class="chartjs-render-monitor"
+                            style="display: block; width: 299px; height: 200px;"></canvas>
+                          <table>
+                            <tr>
+                              <td class="label">Income</td>
+                              <td><input type="text" id="monthlyIncome" class="value" readonly></td>
+                            </tr>
+                            <tr>
+                              <td class="label">Tax</td>
+                              <td><input type="text" id="monthlyTax" class="value" readonly></td>
+                            </tr>
+                            <tr>
+                              <td class="label">Income After Tax</td>
+                              <td><input type="text" id="salaryAfterTax" class="value" readonly></td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-right">
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+            <div class="page-content page-container" id="page-content-2">
+              <div class="padding">
+                <div class="row">
+                  <div class="container-fluid d-flex justify-content-center">
+                    <div class="col-sm-8 col-md-6">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3>Yearly</h3>
+                        </div>
+                        <div class="card-body" style="height: 480px">
+                          <div class="chartjs-size-monitor"
+                            style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                            <div class="chartjs-size-monitor-expand"
+                              style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                              <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink"
+                              style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                              <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                            </div>
+                          </div> <canvas id="chart-line-2" width="299" height="200" class="chartjs-render-monitor"
+                            style="display: block; width: 299px; height: 200px;"></canvas>
+                            <table>
+                              <tr>
+                                <td class="label">Income</td>
+                                <td><input type="text" id="yearlyIncome" class="value" readonly></td>
+                              </tr>
+                              <tr>
+                                <td class="label">Tax</td>
+                                <td><input type="text" id="yearlyTax" class="value" readonly></td>
+                              </tr>
+                              <tr>
+                                <td class="label">Income After Tax</td>
+                                <td><input type="text" id="yearlyIncomeAfterTax" class="value" readonly></td>
+                              </tr>
+                            </table>                            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  </div>
+
+  <div id="businessTab" class="tabcontent">
+    <h1>Business Tax Calculator</h1>
+    <!-- Business tax calculator content goes here -->
+    <table>
+      <tr>
+        <td class="label">Income</td>
+        <td><input type="text" id="monthlySalary" class="value"></td>
+      </tr>
+      <tr>
+        <td class="label">Tax</td>
+        <td><input type="text" id="monthlyTax" class="value"></td>
+      </tr>
+      <tr>
+        <td class="label">Income After Tax</td>
+        <td><input type="text" id="SalaryAfterTax" class="value"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="propertyTab" class="tabcontent">
+    <h1>Property Tax Calculator</h1>
+    <!-- Property tax calculator content goes here -->
+    <table>
+      <tr>
+        <td class="label">Income</td>
+        <td><input type="text" id="monthlySalary" class="value"></td>
+      </tr>
+      <tr>
+        <td class="label">Tax</td>
+        <td><input type="text" id="monthlyTax" class="value"></td>
+      </tr>
+      <tr>
+        <td class="label">Income After Tax</td>
+        <td><input type="text" id="SalaryAfterTax" class="value"></td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="final.js"></script>
+</body>
+
+</html>

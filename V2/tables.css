@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #000;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .value {
+    border: 1px solid #0000FF;
+    border-radius: 5px;
+    background-color: #E6F0FF;
+    padding: 5px;
+    width: 100%;
+  }
+  
