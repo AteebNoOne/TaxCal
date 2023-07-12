@@ -26,8 +26,14 @@ To use the tax calculator widget, you need to embed it in one of the allowed sit
 
 ```html
 <!-- Add this code to your HTML file -->
-<iframe src="https://ateebnoone.github.io/TaxCal/error.html"></iframe>
+<iframe src="https://ateebnoone.github.io/TaxCal"></iframe>
 ```
+OR for version 2
+```html
+<!-- Add this code to your HTML file -->
+<iframe src="https://ateebnoone.github.io/TaxCal/V2"></iframe>
+```
+
 
 ## License
 
