@@ -1,3 +1,5 @@
 <Response>
-  <Say>Hello! This is a test call from Twilio.</Say>
+  <Dial>
+    <Number>+923122043673</Number> <!-- Replace with the phone number you want to dial -->
+  </Dial>
 </Response>
