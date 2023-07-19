@@ -1,5 +1,3 @@
 <Response>
-  <Dial>
-    <Number>{{phoneNumber}}</Number>
-  </Dial>
+  <Say>Thank you for calling Aditiya:</Say>
 </Response>
