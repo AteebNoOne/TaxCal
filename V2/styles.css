@@ -5,8 +5,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-
 .container {
   text-align: center;
   align-items: center;
@@ -36,7 +34,6 @@ body {
   flex: 1;
   margin-right: 180pt;
 }
-
 
 .header-con {
   display: flex;
@@ -90,9 +87,7 @@ h1 {
   font-weight: bolder;
 }
 
-.form-horizontal {
-  margin-bottom: 30px;
-}
+
 
 label {
   font-size: 18px;
@@ -186,8 +181,6 @@ p {
   .charts-container .flex-left{
     margin-left: 100pt;
   }
-
-
 }
 
 @media (max-width: 600px) {
@@ -219,10 +212,13 @@ p {
     margin-bottom: 5px;
   }
 
-
 }
 
+
 @media (max-width: 400px) {
+
+
+
   .copy-button {
     margin-right: 100px;
     flex: 8;
@@ -239,7 +235,7 @@ p {
   }
 
   input {
-    width: 60px;
+    width: 40px;
   }
 
   h2 {
@@ -254,11 +250,12 @@ p {
 
   #main-card {
     height: auto;
+    width: 300px;
   }
 
   .charts-container .card {
-    width: 240pt;
-    /* Adjust the card width for smaller screens */
+    width: 100%;
+    max-width: 240pt;
   }
 
   #selected-year {
