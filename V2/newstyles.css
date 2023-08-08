@@ -9,6 +9,47 @@ h1{
     font-weight: bold;
 }
 
+#selected-year, #selected-yearB{
+    color: rgb(12, 118, 160);
+    font-size: 36px;
+    font-weight: bolder;
+}
+
+.card-header{
+    display: flex;
+}
+.copy-button{
+    flex:1;
+}
+.copyStatus{
+    flex:1;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 900;
+    color: green;
+}
+
+#copy-button, #copy-button2 {
+    display: none;
+    padding: 10px 20px;
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 20px; /* Add border-radius to create beautiful curves */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a transition for smooth hover effect */
+}
+
+#copy-button:hover, #copy-button2:hover {
+    background-color: rgb(126, 74, 74); /* Change background color on hover */
+}
+
+#copy-button p, #copy-button2 p{
+    margin-top: 15px;
+    font-size: 18px;
+    margin-left: 40%;
+}
+
 .charts-container, .charts-containerB{
     display: flex;
     justify-content: space-between;
@@ -45,6 +86,9 @@ h1{
 }
 
 @media (max-width: 992px) {
+    #copy-button p, #copy-button2 p{
+        margin-left: 35%;
+    }
 
     .charts-container .flex-left{
         max-width: 300px;
@@ -102,6 +146,9 @@ h1{
 }
 
 @media (max-width: 690px) {
+    #copy-button p, #copy-button2 p{
+        margin-left: 30%;
+    }
 
     .container{
         max-width: 700px;
@@ -132,6 +179,15 @@ h1{
 }
 
 @media (max-width: 600px) {
+    #selected-year, #selected-yearB{
+        font-size: 32px;
+    }
+    .copyStatus{
+        font-size: 18px;
+    }
+    #copy-button p, #copy-button2 p{
+        margin-left: 25%;
+    }
     h1 {
         font-size: 40px;
     }
@@ -172,6 +228,12 @@ h1{
 }
 
 @media (max-width: 480px) {
+    #selected-year, #selected-yearB{
+        font-size: 28px;
+    }
+    #copy-button p, #copy-button2 p{
+        margin-left: 20%;
+    }
     h1 {
         font-size: 40px;
     }
@@ -192,6 +254,12 @@ h1{
 }
 
 @media (max-width: 430px) {
+    #selected-year, #selected-yearB{
+        font-size: 24px;
+    }
+    #copy-button p, #copy-button2 p{
+        margin-left: 10%;
+    }
     .container{
         max-width: 420px;
     }
@@ -215,6 +283,9 @@ h1{
 }
 
 @media (max-width: 380px) {
+    #selected-year, #selected-yearB{
+        font-size: 20px;
+    }
     h1 {
         font-size: 30px;
     }
