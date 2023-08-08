@@ -304,3 +304,31 @@ h1{
         max-width: 220px;
     }
 }
+
+@media (max-width: 350px) {
+    .copyStatus, #copy-button p, #copy-button2 p{
+        font-size: 12px;
+    }
+    #selected-year, #selected-yearB{
+        font-size: 16px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    .charts-container{
+        margin-left: -10px;
+        margin-bottom: 10px;
+    }
+    .charts-container .flex-left{
+        max-width: 200px;
+    }
+    .charts-container .flex-right{
+        max-width: 200px;
+    }
+    .charts-containerB .flex-left{
+        max-width: 200px;
+    }
+    .charts-containerB .flex-right{
+        max-width: 200px;
+    }
+}
