@@ -1,0 +1,8 @@
+.narrow-input {
+    width: 50%;
+    /* Adjust the width as needed */
+}
+
+.half{
+    display: flex;
+}

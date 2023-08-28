@@ -5,14 +5,17 @@
   <title>Salary Tax Calculator</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="newstyles.css">
   <link rel="stylesheet" type="text/css" href="charts.css">
   <link rel="stylesheet" type="text/css" href="tabs.css">
   <link rel="stylesheet" type="text/css" href="tables.css">
+  <link rel="stylesheet" type="text/css" href="property.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+  
 </head>
 
 <body>
@@ -129,7 +132,7 @@
         <div class="form-group form-group-lg">
           <div class="col-sm-13">
             <input class="form-control" type="number" id="monthlySalaryB" oninput="functionToBeCalled('B')"
-              maxlength="19" max="9999999999999999999" placeholder="Enter your monthly salary">
+              maxlength="19" max="9999999999999999999" placeholder="Enter your business income">
           </div>
         </div>
       </form>
@@ -200,33 +203,218 @@
     </div>
   </div>
 
+  <script src="config.js"></script>
   <div id="propertyTab" class="tabcontent">
     <h1>Property Tax Calculator</h1>
-    <form>
-      <label>
-        <input type="radio" name="option" value="squareYard" checked> Per square yard
-      </label>
-      <label>
-        <input type="radio" name="option" value="squareFoot"> Per square foot
-      </label>
-      <br>
-      <label>
-        Your square yard(s) or square foot(s):
-        <input type="number" id="squareInput" step="0.01" required>
-      </label>
-      <br>
-      <label>
-        Enter FBR value:
-        <input type="number" id="fbrInput" step="0.01" required>
-      </label>
-      <br>
-      <button type="button" onclick="calculatePropertyTaxes()">Calculate</button>
-    </form>
-    <div id="results"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <i class="fa-solid fa-list"></i>
+          <label>Select your area:</label>
+          <select id="areaSelect" class="form-control">
+            <option value="" selected disabled>Select an area</option>
+          </select>
+        </div>
+      </div>
+  
+      <script>
+        const areaSelect = document.getElementById('areaSelect');
+  
+        // Function to populate the options in the select element
+        function populateOptions(areas) {
+          areaSelect.innerHTML = ''; // Clear existing options
+  
+          // Add the default option
+          const defaultOption = document.createElement('option');
+          defaultOption.value = '';
+          defaultOption.textContent = 'Select an area';
+          areaSelect.appendChild(defaultOption);
+  
+          areas.forEach(area => {
+            const option = document.createElement('option');
+            option.value = area.id; // Use a suitable value for each option
+            option.textContent = area.name; // Display the area name
+            areaSelect.appendChild(option);
+          });
+        }
+  
+        // Fetch data from the API and populate options
+        async function fetchAndPopulateOptions() {
+          try {
+            const response = await fetch(`${API_BASE_URL}/areas`);
+            const areas = await response.json();
+            populateOptions(areas);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        }
+  
+        // Call the function to fetch and populate options when the page loads
+        fetchAndPopulateOptions();
+      </script>
+
+          
+  
+    <br>
+  
+    <div class="row">
+      <div class="col">
+        <i class="fa-solid fa-house"></i>
+        <label>Select property type:</label>
+        <select id="propertyTypeSelect" class="form-control">
+          <option value="" selected disabled>Select a property type</option>
+        </select>
+      </div>
+    </div>
+    
+    <script>
+      const propertyTypeSelect = document.getElementById('propertyTypeSelect');
+    
+      // Function to populate the options in the select element
+      function populatePropertyTypeOptions(propertyTypes) {
+        propertyTypeSelect.innerHTML = ''; // Clear existing options
+    
+        // Add the default option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Select a property type';
+        propertyTypeSelect.appendChild(defaultOption);
+    
+        propertyTypes.forEach(propertyType => {
+          const option = document.createElement('option');
+          option.value = propertyType.id; // Use a suitable value for each option
+          option.textContent = propertyType.name; // Display the property type name
+          propertyTypeSelect.appendChild(option);
+        });
+      }
+    
+      // Fetch data from the API and populate property type options
+      async function fetchAndPopulatePropertyTypeOptions() {
+        try {
+          const response = await fetch(`${API_BASE_URL}/properties`); // Replace with your API endpoint
+          const propertyTypes = await response.json();
+          populatePropertyTypeOptions(propertyTypes);
+        } catch (error) {
+          console.error('Error fetching property type data:', error);
+        }
+      }
+    
+      // Call the function to fetch and populate property type options when the page loads
+      fetchAndPopulatePropertyTypeOptions();
+    </script>
+    
+
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <label>Select Unit:</label>
+        <select id="unitSelect" class="form-control">
+          <option value="" selected disabled>Select a unit</option>
+        </select>
+      </div>
+    </div>
+    
+    <script>
+      const unitSelect = document.getElementById('unitSelect');
+    
+      // Function to populate the options in the select element
+      function populateUnitOptions(units) {
+        unitSelect.innerHTML = ''; // Clear existing options
+    
+        // Add the default option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Select a unit';
+        unitSelect.appendChild(defaultOption);
+    
+        units.forEach(unit => {
+          const option = document.createElement('option');
+          option.value = unit.id; // Use a suitable value for each option
+          option.textContent = unit.name; // Display the unit name
+          unitSelect.appendChild(option);
+        });
+      }
+    
+      // Fetch data from the API and populate unit options
+      async function fetchAndPopulateUnitOptions() {
+        try {
+          const response = await fetch(`${API_BASE_URL}/units`); // Replace with your API endpoint
+          const units = await response.json();
+          populateUnitOptions(units);
+        } catch (error) {
+          console.error('Error fetching unit data:', error);
+        }
+      }
+    
+      // Call the function to fetch and populate unit options when the page loads
+      fetchAndPopulateUnitOptions();
+    </script>
+    
+
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <p> <i class="fa-solid fa-ruler"></i> Enter Plot Area: <input type="number" class="form-control" placeholder="Enter Plot Area"></p>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <i class="fa-solid fa-book"></i>
+        <label>Select Nature of Transaction:</label>
+        <select id="transactionNatureSelect" class="form-control">
+          <option value="" selected disabled>Select a nature of transaction</option>
+        </select>
+      </div>
+    </div>
+    
+    <script>
+      const transactionNatureSelect = document.getElementById('transactionNatureSelect');
+    
+      // Function to populate the options in the select element
+      function populateTransactionNatureOptions(transactionNatureOptions) {
+        transactionNatureSelect.innerHTML = ''; // Clear existing options
+    
+        // Add the default option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Select a nature of transaction';
+        transactionNatureSelect.appendChild(defaultOption);
+    
+        transactionNatureOptions.forEach(option => {
+          const optionElement = document.createElement('option');
+          optionElement.value = option.id; // Replace with the appropriate property if needed
+          optionElement.textContent = option.name; // Assuming 'name' is the property with the nature value
+          transactionNatureSelect.appendChild(optionElement);
+        });
+      }
+    
+      // Fetch data from the API and populate transaction nature options
+      async function fetchAndPopulateTransactionNatureOptions() {
+        try {
+          const response = await fetch(`${API_BASE_URL}/nature`); // Replace with your API endpoint
+          const transactionNatureOptions = await response.json();
+          populateTransactionNatureOptions(transactionNatureOptions);
+        } catch (error) {
+          console.error('Error fetching transaction nature data:', error);
+        }
+      }
+      fetchAndPopulateTransactionNatureOptions();
+    </script>
+    
+    
+
   </div>
-  <script>
-  </script>
-  <script src="script.min.js"></script>
+</div>
+  </div>
+  
+
+  <script src="main.min.js"></script>
 </body>
 
 </html>
